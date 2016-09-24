@@ -1,10 +1,4 @@
-var modal_URL = "http://ryugadou.mydns.jp/cgi-bin/";
-//var modal_URL ="http://cloud9-server/cgi-bin/";
-//var modal_URL ="http://192.168.0.101/cgi-bin/";
-//var modal_URL ="http://192.168.11.51/cgi-bin/";
 var parentData;
-var xhr;
-var IPPath = "http://ryugadou.mydns.jp";
 var Pathcount;
 
 
@@ -28,7 +22,7 @@ var Pathcount;
 function info_add_showModal(element) {
     
     if (alert_check2() == false) {
-	return;
+    return;
     }
     
 
@@ -44,7 +38,7 @@ function info_add_showModal(element) {
 function voice_add_showModal(element) {
 
     if (alert_check2() == false) {
-	return;
+    return;
     }
     
     var sendArguments = [];  
@@ -52,14 +46,14 @@ function voice_add_showModal(element) {
     sendArguments[2] = getLanguageID(); 
     /*モーダルダイアログを開く*/ 
     showModalDialog("Voice_add_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;"); 
-	changeSelect();
+    changeSelect();
 }
 
 /*1,【モーダルを表示する】言語-add*/
 function language_add_showModal(element) {
 
     if (alert_check2() == false) {
-	return;
+    return;
     }
 
 
@@ -68,7 +62,7 @@ function language_add_showModal(element) {
     /*sendArguments[2] = getLanguageID();*/
     /*モーダルダイアログを開く*/ 
     showModalDialog("Language_add_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;"); 
-	location.reload(true);
+    location.reload(true);
 }
 
 
@@ -77,7 +71,7 @@ function language_add_showModal(element) {
 function info_edit_showModal() {
     
      if (alert_check() == true) {
-	return;
+    return;
     }
     
     var sendArguments = [];  
@@ -101,37 +95,37 @@ function info_edit_showModal() {
 
     /*モーダルダイアログを開く*/ 
     showModalDialog("Info_edit_modal.html",sendArguments,"dialogWidth=900px; dialogHeight=2000px;"); 
-	changeSelect();
+    changeSelect();
 }
 
 /*1,【モーダルを表示する】音声-edit*/
 function voice_edit_showModal(element) {
 
      if (alert_check() == true) {
-	return;
+    return;
     }
     
 
     var sendArguments = [];  
     /*PageID*/
     sendArguments[0] = getLocationID();
-	
+    
     sendArguments[1] = getvoiceName();
-	
+    
     /*languageID*/
     sendArguments[2] = getLanguageID();
     /*voice_nativeName*/
     sendArguments[3] = getnativeName2();
     /*モーダルダイアログを開く*/ 
     showModalDialog("Voice_edit_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;"); 
-	changeSelect();
+    changeSelect();
 }
 
 /*1,【モーダルを表示する】言語-edit*/
 function language_edit_showModal(element) {
 
      if (alert_check() == true) {
-	return;
+    return;
     }
     
     var sendArguments = [];
@@ -156,14 +150,14 @@ function text_delete_showModal(element) {
     sendArguments[2] = getLanguageID(); 
     /*モーダルダイアログを開く*/ 
     showModalDialog("Text_delete_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;"); 
-	changeSelect();
+    changeSelect();
 }
 
 /*1,【モーダルを表示する】音声-delete*/
 function voice_delete_showModal(element) {
 
     if (alert_check() == true) {
-	return;
+    return;
     }
 
     var sendArguments = [];  
@@ -176,14 +170,14 @@ function voice_delete_showModal(element) {
     sendArguments[2] = getLanguageID(); 
     /*モーダルダイアログを開く*/
     showModalDialog("Voice_delete_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;");
-	changeSelect();
+    changeSelect();
 }
 
 /*1,【モーダルを表示する】言語-delete*/
 function language_delete_showModal(element) {
 
     if (alert_check() == true) {
-	return;
+    return;
     }
 
     var sendArguments = [];  
@@ -199,7 +193,7 @@ location.reload(true);
 function textpic_showModal() {
 
     if (alert_check() == true) {
-	return;
+    return;
     }
 
     var sendArguments = [];
@@ -241,41 +235,25 @@ function textpic_showModal() {
 /*4,【delete】テキスト */
     /*親ウインドウからデータを受け取る*/
     function text_setParams() {
-	parentData = window.dialogArguments;
-	
-	console.log(parentData);
-	console.log(parentData[0]);
-	console.log(parentData[2]);
+    parentData = window.dialogArguments;
+    
+    console.log(parentData);
+    console.log(parentData[0]);
+    console.log(parentData[2]);
     }
-
-function XMLHttpRequestCreate(){
-    try {
-	return new XMLHttpRequest();
-    } catch(e) {}
-    try {
-	return new ActiveXObject('MSXML2.XMLHTTP.6.0');
-    } catch(e) {}
-    try {
-	return new ActiveXObject('MSXML2.XMLHTTP.3.0');
-    } catch(e) {}
-    try {
-	return new ActiveXObject('MSXML2.XMLHTTP');
-    } catch(e) {}    
-    return null;
-}
 
 
 function text_kesu() {
     console.log(parentData[6]);
     
     if (parentData[6] == "pic/notext.txt") {
-	return;
+    return;
     }
     
     console.log("iii"); 
     
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_text.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_text.cgi", false);
     
     var fdata = new FormData();
     fdata.append("LanguageID", parentData[2]);
@@ -301,19 +279,19 @@ function text_kesu() {
 
     <!--親ウインドウからデータを受け取る-->
     function voice_setParams() {
-	parentData = window.dialogArguments;
-	
-	console.log(parentData);
-	console.log(parentData[0]);
-	console.log(parentData[1]);
-	console.log(parentData[2]);
-	console.log(parentData[3]);
+    parentData = window.dialogArguments;
+    
+    console.log(parentData);
+    console.log(parentData[0]);
+    console.log(parentData[1]);
+    console.log(parentData[2]);
+    console.log(parentData[3]);
     }
 
 
 function voice_kesu() {
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_voice.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_voice.cgi", false);
     
     var fdata = new FormData();
     fdata.append("LanguageID", parentData[2]);
@@ -333,7 +311,7 @@ function voice_kesu() {
 
 function location_kesu() {
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_location.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_location.cgi", false);
     
     var fdata = new FormData();
     fdata.append("LocationID", parentData[0]);
@@ -363,7 +341,7 @@ function language_setParams() {
 
 function language_kesu() {
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_language.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_language.cgi", false);
     
     var fdata = new FormData();
     fdata.append("LanguageID", parentData[2]);     
@@ -399,31 +377,31 @@ function textpic_setParams() {
     var iframe = document.createElement("iframe");
     iframe.width = 470;
     if(parentData[6] == undefined){
-	iframe.src = "pic/notext.txt";   
+    iframe.src = "pic/notext.txt";   
     } else {
-	iframe.src = parentData[6];
+    iframe.src = parentData[6];
     }
     input_file_show.appendChild(iframe);
   
     
     // 写真は３枚まで載せるということで,下のiの値は3にしている。
     for(i = 0; i < 3; i++) {
-	var checkContents = document.getElementById("picture"+i);
-	console.log("picture"+i);
+    var checkContents = document.getElementById("picture"+i);
+    console.log("picture"+i);
 
-	//var newInput = document.createElement("input");
-	//newInput.type = "radio";
-	//newInput.checked = true;
-	//checkContents.appendChild(newInput);
+    //var newInput = document.createElement("input");
+    //newInput.type = "radio";
+    //newInput.checked = true;
+    //checkContents.appendChild(newInput);
 
-	var createImg = document.createElement("img");
-	if(parentData[4][i] == undefined){
-	    createImg.src ="pic/noimage.png";
-	} else {
-	    createImg.src = parentData[4][i];
-	}
-	createImg.width = 150;
-	checkContents.appendChild(createImg);
+    var createImg = document.createElement("img");
+    if(parentData[4][i] == undefined){
+        createImg.src ="pic/noimage.png";
+    } else {
+        createImg.src = parentData[4][i];
+    }
+    createImg.width = 150;
+    checkContents.appendChild(createImg);
     }
 }
 
@@ -474,28 +452,28 @@ var AWSURL="http://ryugadou.mydns.jp/CaviNet/Picture/";
     }
 }
 /*
-	//1番目の画像
-	var createImg = document.createElement("img");
-	createImg.src = AWSURL + parentData[0] + "_Pic000" + ".jpg";
-	createImg.width = 200;
-	console.log("picture"+0)
-	document.getElementById("picture"+0).appendChild(createImg);
+    //1番目の画像
+    var createImg = document.createElement("img");
+    createImg.src = AWSURL + parentData[0] + "_Pic000" + ".jpg";
+    createImg.width = 200;
+    console.log("picture"+0)
+    document.getElementById("picture"+0).appendChild(createImg);
 
-	
-	//2番目の画像
-	var createImg = document.createElement("img");
-	createImg.src = AWSURL + parentData[0] + "_Pic001" + ".jpg";
-	createImg.width = 200;
-	console.log("picture"+1)
-	document.getElementById("picture"+1).appendChild(createImg);
+    
+    //2番目の画像
+    var createImg = document.createElement("img");
+    createImg.src = AWSURL + parentData[0] + "_Pic001" + ".jpg";
+    createImg.width = 200;
+    console.log("picture"+1)
+    document.getElementById("picture"+1).appendChild(createImg);
 
-	//3番目の画像
-	var createImg = document.createElement("img");
-	createImg.src = AWSURL + parentData[0] + "_Pic002" + ".jpg";
-	createImg.width = 200;
-	console.log("picture"+2)
-	document.getElementById("picture"+2).appendChild(createImg);
-	}
+    //3番目の画像
+    var createImg = document.createElement("img");
+    createImg.src = AWSURL + parentData[0] + "_Pic002" + ".jpg";
+    createImg.width = 200;
+    console.log("picture"+2)
+    document.getElementById("picture"+2).appendChild(createImg);
+    }
 */
 /* 【delete】案内場所(Page) ←　これをやると関連するテキストと写真も消える...よ*/
 function page_setParams() {
@@ -508,11 +486,11 @@ function page_setParams() {
 function page_kesu() {
     if(window.confirm('本当によろしいですか？\n選択している『案内場所』の画像・テキストが\n全て消えますよ？')){
     } else{
-	return;	
+    return;    
     }
     
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_page.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_page.cgi", false);
 
     var fdata = new FormData();
     fdata.append("PageID", parentData[0]);
@@ -529,7 +507,7 @@ function page_kesu() {
 /* 【delete】写真 */
 function picture_kesu() {
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_picture.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
     console.log(parentData[3]);
     
     var fdata = new FormData();
@@ -537,12 +515,12 @@ function picture_kesu() {
     fdata.append("PageID", parentData[0]);
      console.log("いいい");
     for(i = 0; i < 3; ++i) {
-	console.log("ううう");
-	var tr = document.getElementById("picture"+i); 
-	if(tr.firstElementChild.checked) {
-	    console.log("えええ");
-	    fdata.append("PictureID", parentData[3][i]);
-	}
+    console.log("ううう");
+    var tr = document.getElementById("picture"+i); 
+    if(tr.firstElementChild.checked) {
+        console.log("えええ");
+        fdata.append("PictureID", parentData[3][i]);
+    }
     }
     xhr.send(fdata);
     var res = new CGIResponse(xhr.response);
@@ -554,11 +532,11 @@ function picture_kesu() {
 
 function picture_kesu0() {
      if(parentData[4][0] == undefined){
-	return;
+    return;
     }
 
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_picture.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
     console.log(parentData[3]);
   
     var fdata = new FormData();
@@ -572,11 +550,11 @@ function picture_kesu0() {
 
 function picture_kesu1() {
      if(parentData[4][1] == undefined){
-	return;
+    return;
     }
 
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_picture.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
     console.log(parentData[3]);
   
     var fdata = new FormData();
@@ -589,12 +567,12 @@ function picture_kesu1() {
 }
 
 function picture_kesu2() {
-     if(parentData[4][2] == undefined){	 
-	return 0;
+     if(parentData[4][2] == undefined){     
+    return 0;
     }
 
     xhr = XMLHttpRequestCreate();
-    xhr.open("POST", modal_URL+"delete_picture.cgi", false);
+    xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
     console.log(parentData[7]);
     console.log(Pathcount);
   
@@ -614,14 +592,14 @@ function getPageID() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked) {
-	    var td = document.getElementById("Info(" + i + ",7)");
-	    console.log(td);
-	    var id = "Pag" + td.textContent;
-	    
-	    return id;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked) {
+        var td = document.getElementById("Info(" + i + ",7)");
+        console.log(td);
+        var id = "Pag" + td.textContent;
+        
+        return id;
+    }
     }
 }
 
@@ -630,13 +608,13 @@ function getName() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked) {
-	    var name = InfoTable[i][1];
-	    console.log(name);
-	    return name;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked) {
+        var name = InfoTable[i][1];
+        console.log(name);
+        return name;
+        break;
+    }
     }
 }
 
@@ -646,13 +624,13 @@ function getvoiceName() {
     console.log(len.length);
     console.log(voiceInfoTable);
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked) {
-	    var name = voiceInfoTable[i][1];
-	    console.log(name);
-	    return name;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked) {
+        var name = voiceInfoTable[i][1];
+        console.log(name);
+        return name;
+        break;
+    }
     }
 }
 
@@ -661,13 +639,13 @@ function getlanguageName() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked) {
-	    var name = langInfoTable[i][1];
-	    console.log(name);
-	    return name;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked) {
+        var name = langInfoTable[i][1];
+        console.log(name);
+        return name;
+        break;
+    }
     }
 }
 
@@ -685,16 +663,16 @@ function getLanguageID2() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	console.log(tr);
-	if (tr.firstElementChild.checked) {
-	    var td = document.getElementById("Info(" + i + ",1)");
-	    console.log(td);
-	    var id = "Lan" + td.textContent;
-	    console.log(id);
-	    return id;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    console.log(tr);
+    if (tr.firstElementChild.checked) {
+        var td = document.getElementById("Info(" + i + ",1)");
+        console.log(td);
+        var id = "Lan" + td.textContent;
+        console.log(id);
+        return id;
+        break;
+    }
     }
 }
 
@@ -708,11 +686,11 @@ function getPictureID() {
 
 
     for(i = 0; i < InfoPicTable.length; ++i){
-	if( InfoPicTable[i][1] == pageid ) {
-	    console.log(InfoPicTable[i][0]);
-	    id[count] = InfoPicTable[i][0]; //PictureID
-	    count++;
-	}	
+    if( InfoPicTable[i][1] == pageid ) {
+        console.log(InfoPicTable[i][0]);
+        id[count] = InfoPicTable[i][0]; //PictureID
+        count++;
+    }    
     }
     return id;
 }
@@ -725,15 +703,15 @@ function getFilePath() {
     var pageid = getPageID();
     //console.log("a" + pageid);
     for(i = 0; i < InfoPicTable.length; i++) {
-		if(InfoPicTable[i][1] == pageid) {
-		    console.log(InfoPicTable[i][0]);
-		    count = InfoPicTable[i][3].substring(37,38);
-		    Picture_count[count] = InfoPicTable[i][0];
-		    console.log(count);
-		    var Path = InfoPicTable[i][3].substring(8);
-		    FilePath[count] = IPPath + Path;
-		    //count++;
-		}
+        if(InfoPicTable[i][1] == pageid) {
+            console.log(InfoPicTable[i][0]);
+            count = InfoPicTable[i][3].substring(37,38);
+            Picture_count[count] = InfoPicTable[i][0];
+            console.log(count);
+            var Path = InfoPicTable[i][3].substring(8);
+            FilePath[count] = Path;
+            //count++;
+        }
     }
     console.log(Picture_count);
     Pathcount = Picture_count;
@@ -747,10 +725,10 @@ function getFilePath2() {
     var Picture_count = [];
     var pageid = getPageID();
     for(i = 0; i < InfoPicTable.length; i++) {
-		if(InfoPicTable[i][1] == pageid) {
-		    count = InfoPicTable[i][3].substring(37,38);
-		    Picture_count[count] = InfoPicTable[i][0];
-		}
+        if(InfoPicTable[i][1] == pageid) {
+            count = InfoPicTable[i][3].substring(37,38);
+            Picture_count[count] = InfoPicTable[i][0];
+        }
     }
     return Picture_count;
 }
@@ -763,16 +741,16 @@ function getTextFilePath() {
     var pageid2 = getPageID();
     //console.log("a" + pageid);
     for(i = 0; i < InfoTable.length; i++) {
-	if(InfoTable[i][0] == pageid2) {
-	    console.log(InfoTable[i][7]);
-	    if(InfoTable[i][7] == undefined) {
-		var notext = "pic/notext.txt";
-		return notext;
-	    }
-	    var Path2 = InfoTable[i][7].substring(8);
-	    FilePath2[count2] = IPPath + Path2;
-	    count2++;
-	}
+    if(InfoTable[i][0] == pageid2) {
+        console.log(InfoTable[i][7]);
+        if(InfoTable[i][7] == undefined) {
+        var notext = "pic/notext.txt";
+        return notext;
+        }
+        var Path2 = InfoTable[i][7].substring(8);
+        FilePath2[count2] = Path2;
+        count2++;
+    }
     }
     return FilePath2;
 }
@@ -780,17 +758,17 @@ function getTextFilePath() {
 
 
 function getLocationID() {
-	var len = document.getElementById("TbodyArea").childNodes;
-	for (var i = 0; i < len.length; ++i) {
-		var tr = document.getElementById("Info(" + i + ",0)"); 
-		if (tr.firstElementChild.checked) {
-			var td = document.getElementById("Info(" + i + ",5)");
-			var id = "Loc" + td.textContent;
+    var len = document.getElementById("TbodyArea").childNodes;
+    for (var i = 0; i < len.length; ++i) {
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        if (tr.firstElementChild.checked) {
+            var td = document.getElementById("Info(" + i + ",5)");
+            var id = "Loc" + td.textContent;
 
-			return id;
-		        break;
-		}
-	}
+            return id;
+                break;
+        }
+    }
 }
 
 
@@ -799,18 +777,18 @@ function alert_check() {
     var count = 0;
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)");
-	console.log(tr);
-	if (tr.firstElementChild.checked == true) {
-	    count++;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)");
+    console.log(tr);
+    if (tr.firstElementChild.checked == true) {
+        count++;
+    }
     }
     if(count == 0) {
-	document.getElementById("alert").innerHTML = "表にチェックを付けてください";
-	return true;
+    document.getElementById("alert").innerHTML = "表にチェックを付けてください";
+    return true;
     } else {
-	document.getElementById("alert").innerHTML = "";
-	return false;
+    document.getElementById("alert").innerHTML = "";
+    return false;
     }
 }
 
@@ -819,18 +797,18 @@ function alert_check2() {
     var count = 0;
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)");
-	console.log(tr);
-	if (tr.firstElementChild.checked == true) {
-	    count++;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)");
+    console.log(tr);
+    if (tr.firstElementChild.checked == true) {
+        count++;
+    }
     }
     if(count == 0) {
-	document.getElementById("alert").innerHTML = "";
-	return true;
+    document.getElementById("alert").innerHTML = "";
+    return true;
     } else {
-	document.getElementById("alert").innerHTML = "表にチェックを付けないでください";
-	return false;
+    document.getElementById("alert").innerHTML = "表にチェックを付けないでください";
+    return false;
     }
 }
 
@@ -843,13 +821,13 @@ function alert_modal() {
     
     var ess = new Array("page", "page2");
     for(i = 0; i < ess.length; i++) {
-	var txt = document.location.ess[i].value;
-	console.log(txt);
-	if(txt == "") {
-	    document.getElementById("location").innerHTML = "案内場所に入力してください";
-	} else {
-	document.getElementById("location").innerHTML = "";
-	}    
+    var txt = document.location.ess[i].value;
+    console.log(txt);
+    if(txt == "") {
+        document.getElementById("location").innerHTML = "案内場所に入力してください";
+    } else {
+    document.getElementById("location").innerHTML = "";
+    }    
     }
 }
 
@@ -858,13 +836,13 @@ function getnativeName() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log("len" + len.length);
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked == true) {
-	    var name = InfoTable[i][9];
-	    console.log("nativeName" + name);
-	    return name;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked == true) {
+        var name = InfoTable[i][9];
+        console.log("nativeName" + name);
+        return name;
+        break;
+    }
     }
 }    
 
@@ -873,12 +851,12 @@ function getnativeName2() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log("len" + len.length);
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked == true) {
-	    var name = voiceInfoTable[i][6];
-	    console.log("nativeName" + name);
-	    return name;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked == true) {
+        var name = voiceInfoTable[i][6];
+        console.log("nativeName" + name);
+        return name;
+        break;
+    }
     }
 }    

@@ -1,10 +1,3 @@
-var add_URL = "http://ryugadou.mydns.jp/cgi-bin/";
-//var add_URL ="http://cloud9-server/cgi-bin/";
-//var add_URL ="http://192.168.0.101/cgi-bin/";
-//var add_URL ="http://192.168.11.51/cgi-bin/";
-
-var xhr;
-
 var parentData = [];
 
 //info
@@ -13,33 +6,33 @@ function onClickSubmit_add_Info() {
     //alert_modal();
 
     var xhr = XMLHttpRequestCreate();
-    xhr.open("GET", add_URL+"getTable.cgi?tbl=Page", false);
+    xhr.open("GET", BASE_PATH+"getTable.cgi?tbl=Page", false);
     xhr.send("");
 
     var res = new CGIResponse(xhr.response).Response.split("\n");
 
-	var max = 0;
-	var pages = [];
+    var max = 0;
+    var pages = [];
     for (var i = 0; i < res.length; ++i) {
-		var r = res[i].split(",");
+        var r = res[i].split(",");
         if (r.length == 1) {
-		
+        
             break;
         }
 
-		var id = parseInt(r[0].substr(3,3));
+        var id = parseInt(r[0].substr(3,3));
 
-		if (max < id) max = id;
-		pages[id] = r[1];
+        if (max < id) max = id;
+        pages[id] = r[1];
     }
-	
-	var id;
-	for (id = 1; id <= max; ++id) {
-		if (pages[id] == undefined) {
-			break;
-		}
-	}
-	
+    
+    var id;
+    for (id = 1; id <= max; ++id) {
+        if (pages[id] == undefined) {
+            break;
+        }
+    }
+    
     var lid;
     if (id < 10) {
         lid = "Pag00" + id;
@@ -48,141 +41,141 @@ function onClickSubmit_add_Info() {
     } else {
         lid = "Pag" + id;
     }
-	
-	//Seq
-	var xhr = XMLHttpRequestCreate();
-    xhr.open("GET", add_URL+"getTable.cgi?tbl=Page", false);
+    
+    //Seq
+    var xhr = XMLHttpRequestCreate();
+    xhr.open("GET", BASE_PATH+"getTable.cgi?tbl=Page", false);
     xhr.send("");
 
     var res = new CGIResponse(xhr.response).Response.split("\n");
 
-	var max = 0;
-	var pages = [];
+    var max = 0;
+    var pages = [];
     for (var i = 0; i < res.length; ++i) {
-		var r = res[i].split(",");
+        var r = res[i].split(",");
         if (r.length == 1) {
-		
+        
             break;
         }
 
-		var seq = parseInt(r[2]);
-		if (max < seq) max = seq;
-		pages[seq] = r[1];
+        var seq = parseInt(r[2]);
+        if (max < seq) max = seq;
+        pages[seq] = r[1];
     }
-	
-	var seq;
-	for (seq = 1; seq <= max; ++seq) {
-		if (pages[seq] == undefined) {
-			break;
-		}
-	}
-		
+    
+    var seq;
+    for (seq = 1; seq <= max; ++seq) {
+        if (pages[seq] == undefined) {
+            break;
+        }
+    }
+        
     //PageNameの送信
-	//console.log(lid);
-	//console.log(parentData[2]);
-	var fdata = new FormData();
-	var textForm = document.getElementById("page");
-	xhr = XMLHttpRequestCreate();
-	fdata.append("name",textForm.value);
-	console.log(textForm.value);
-	fdata.append("PageID",lid);
-	fdata.append("Sequence",seq);
-	var u = add_URL+"update_page.cgi";
-	console.log(u);
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	console.log(fdata);
+    //console.log(lid);
+    //console.log(parentData[2]);
+    var fdata = new FormData();
+    var textForm = document.getElementById("page");
+    xhr = XMLHttpRequestCreate();
+    fdata.append("name",textForm.value);
+    console.log(textForm.value);
+    fdata.append("PageID",lid);
+    fdata.append("Sequence",seq);
+    var u = BASE_PATH+"update_page.cgi";
+    console.log(u);
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    console.log(fdata);
 
 //本場の綴り
-	var fdata = new FormData();
-	var textForm = document.getElementById("page2");
-	xhr = XMLHttpRequestCreate();
-	fdata.append("LanguageID",parentData[2]);
-	fdata.append("name",textForm.value);
-	console.log(textForm.value);
-	fdata.append("PageID",lid);
-	var u = add_URL+"update_tpage.cgi";
-	console.log(u);
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	console.log(fdata);
+    var fdata = new FormData();
+    var textForm = document.getElementById("page2");
+    xhr = XMLHttpRequestCreate();
+    fdata.append("LanguageID",parentData[2]);
+    fdata.append("name",textForm.value);
+    console.log(textForm.value);
+    fdata.append("PageID",lid);
+    var u = BASE_PATH+"update_tpage.cgi";
+    console.log(u);
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    console.log(fdata);
 
-	//file情報の送信
-	var form = document.getElementById("textfile");
+    //file情報の送信
+    var form = document.getElementById("textfile");
         console.log(form);
-	var fdata = new FormData(form);
+    var fdata = new FormData(form);
         console.log(fdata);
-	fdata.append("LanguageID" , parentData[2]);
-	fdata.append("PageID",lid);
-	xhr = XMLHttpRequestCreate();
-	var u = add_URL+"update_text.cgi";
-	xhr.open("post", u, false);
-	xhr.send(fdata);
+    fdata.append("LanguageID" , parentData[2]);
+    fdata.append("PageID",lid);
+    xhr = XMLHttpRequestCreate();
+    var u = BASE_PATH+"update_text.cgi";
+    xhr.open("post", u, false);
+    xhr.send(fdata);
 
 
-	//Picturefile情報の送信
-	var form = document.getElementById("picfile1");
-	var fdata = new FormData(form);
-	fdata.append("PageID",lid);
-	fdata.append("PictureID","Pic000");
-	xhr = XMLHttpRequestCreate();
-	var u = add_URL+"update_picture.cgi";
-	xhr.open("post", u, false);
-	xhr.send(fdata);
+    //Picturefile情報の送信
+    var form = document.getElementById("picfile1");
+    var fdata = new FormData(form);
+    fdata.append("PageID",lid);
+    fdata.append("PictureID","Pic000");
+    xhr = XMLHttpRequestCreate();
+    var u = BASE_PATH+"update_picture.cgi";
+    xhr.open("post", u, false);
+    xhr.send(fdata);
 
-	var form = document.getElementById("picfile2");
-	var fdata = new FormData(form);
-	fdata.append("PageID",lid);
-	fdata.append("PictureID","Pic001");
-	xhr = XMLHttpRequestCreate();
-	var u = add_URL+"update_picture.cgi";
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	
-	var form = document.getElementById("picfile3");
-	var fdata = new FormData(form);
-	fdata.append("PageID",lid);
-	fdata.append("PictureID","Pic002");
-	xhr = XMLHttpRequestCreate();
-	var u = add_URL+"update_picture.cgi";
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	
-	//Log
-	//console.log(xhr.response);
-	var res = new CGIResponse(xhr.response);
-	res.print();
-	window.close();
+    var form = document.getElementById("picfile2");
+    var fdata = new FormData(form);
+    fdata.append("PageID",lid);
+    fdata.append("PictureID","Pic001");
+    xhr = XMLHttpRequestCreate();
+    var u = BASE_PATH+"update_picture.cgi";
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    
+    var form = document.getElementById("picfile3");
+    var fdata = new FormData(form);
+    fdata.append("PageID",lid);
+    fdata.append("PictureID","Pic002");
+    xhr = XMLHttpRequestCreate();
+    var u = BASE_PATH+"update_picture.cgi";
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    
+    //Log
+    //console.log(xhr.response);
+    var res = new CGIResponse(xhr.response);
+    res.print();
+    window.close();
 }
 //Voice
 function onClickSubmit_add_Voice() {
-	var xhr = XMLHttpRequestCreate();
-    xhr.open("GET", add_URL+"getTable.cgi?tbl=Location", false);
+    var xhr = XMLHttpRequestCreate();
+    xhr.open("GET", BASE_PATH+"getTable.cgi?tbl=Location", false);
     xhr.send("");
 
     var res = new CGIResponse(xhr.response).Response.split("\n");
 
-	var max = 0;
-	var pages = [];
+    var max = 0;
+    var pages = [];
     for (var i = 0; i < res.length; ++i) {
-		var r = res[i].split(",");
+        var r = res[i].split(",");
 
         if (r.length == 1) {
             break;
         }
 
-		var id = parseInt(r[0].substr(3,3));
-		if (max < id) max = id;
-		pages[id] = r[1];
+        var id = parseInt(r[0].substr(3,3));
+        if (max < id) max = id;
+        pages[id] = r[1];
     }
-	
-	var id;
-	for (id = 0; id <= max; ++id) {
-		if (pages[id] == undefined) {
-			break;
-		}
-	}
-	
+    
+    var id;
+    for (id = 0; id <= max; ++id) {
+        if (pages[id] == undefined) {
+            break;
+        }
+    }
+    
     var lid;
     if (id < 10) {
         lid = "Loc00" + id;
@@ -191,111 +184,111 @@ function onClickSubmit_add_Voice() {
     } else {
         lid = "Loc" + id;
     }
-	
-	//Seq
-	var xhr = XMLHttpRequestCreate();
-    xhr.open("GET", add_URL+"getTable.cgi?tbl=Location", false);
+    
+    //Seq
+    var xhr = XMLHttpRequestCreate();
+    xhr.open("GET", BASE_PATH+"getTable.cgi?tbl=Location", false);
     xhr.send("");
 
     var res = new CGIResponse(xhr.response).Response.split("\n");
 
-	var max = 0;
-	var pages = [];
+    var max = 0;
+    var pages = [];
     for (var i = 0; i < res.length; ++i) {
-		var r = res[i].split(",");
+        var r = res[i].split(",");
         if (r.length == 1) {
-		
+        
             break;
         }
 
-		var seq = parseInt(r[2]);
-		if (max < seq) max = seq;
-		pages[seq] = r[1];
+        var seq = parseInt(r[2]);
+        if (max < seq) max = seq;
+        pages[seq] = r[1];
     }
-	
-	var seq;
-	for (seq = 1; seq <= max; ++seq) {
-		if (pages[seq] == undefined) {
-			break;
-		}
-	}
+    
+    var seq;
+    for (seq = 1; seq <= max; ++seq) {
+        if (pages[seq] == undefined) {
+            break;
+        }
+    }
     //PageNameの送信
-	var fdata = new FormData();
-	var textForm = document.getElementById("page");
-	xhr = XMLHttpRequestCreate();
-	fdata.append("name",textForm.value);
-	//console.log(textForm.value);
-	fdata.append("LocationID",lid);
-	fdata.append("Sequence",seq);
-	var u = add_URL+"update_location.cgi";
-	//console.log(u);
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	//console.log(fdata);
-	
-	//本場の綴り TPAGE!!!
-	var fdata = new FormData();
-	var textForm = document.getElementById("page2");
-	xhr = XMLHttpRequestCreate();
-	fdata.append("LanguageID",parentData[2]);
-	fdata.append("name",textForm.value);
-	console.log(textForm.value);
-	fdata.append("LocationID",lid);
-	var u = add_URL+"update_tlocation.cgi";
-	console.log(u);
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	console.log(fdata);
+    var fdata = new FormData();
+    var textForm = document.getElementById("page");
+    xhr = XMLHttpRequestCreate();
+    fdata.append("name",textForm.value);
+    //console.log(textForm.value);
+    fdata.append("LocationID",lid);
+    fdata.append("Sequence",seq);
+    var u = BASE_PATH+"update_location.cgi";
+    //console.log(u);
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    //console.log(fdata);
+    
+    //本場の綴り TPAGE!!!
+    var fdata = new FormData();
+    var textForm = document.getElementById("page2");
+    xhr = XMLHttpRequestCreate();
+    fdata.append("LanguageID",parentData[2]);
+    fdata.append("name",textForm.value);
+    console.log(textForm.value);
+    fdata.append("LocationID",lid);
+    var u = BASE_PATH+"update_tlocation.cgi";
+    console.log(u);
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    console.log(fdata);
 
-	//file情報の送信
-	var form = document.getElementById("file");
-	var fdata = new FormData(form);
-	fdata.append("LanguageID",parentData[2]);
-	fdata.append("LocationID",lid);
-	xhr = XMLHttpRequestCreate();
-	var u = add_URL+"update_voice.cgi";
-	//console.log(u);
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	
-	//Log
-	//console.log(xhr.response);
-	var res = new CGIResponse(xhr.response);
-	res.print();
-	
-	window.close();
+    //file情報の送信
+    var form = document.getElementById("file");
+    var fdata = new FormData(form);
+    fdata.append("LanguageID",parentData[2]);
+    fdata.append("LocationID",lid);
+    xhr = XMLHttpRequestCreate();
+    var u = BASE_PATH+"update_voice.cgi";
+    //console.log(u);
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    
+    //Log
+    //console.log(xhr.response);
+    var res = new CGIResponse(xhr.response);
+    res.print();
+    
+    window.close();
 }
 
 
 //Language
 function onClickSubmit_add_Language() {
-	var xhr = XMLHttpRequestCreate();
-    xhr.open("GET", add_URL+"getTable.cgi?tbl=Language", false);
+    var xhr = XMLHttpRequestCreate();
+    xhr.open("GET", BASE_PATH+"getTable.cgi?tbl=Language", false);
     xhr.send("");
 
     var res = new CGIResponse(xhr.response).Response.split("\n");
 
-	var max = 0;
-	var pages = [];
+    var max = 0;
+    var pages = [];
     for (var i = 0; i < res.length; ++i) {
-		var r = res[i].split(",");
+        var r = res[i].split(",");
 
         if (r.length == 1) {
             break;
         }
 
-		var id = parseInt(r[0].substr(3,3));
-		if (max < id) max = id;
-		pages[id] = r[1];
+        var id = parseInt(r[0].substr(3,3));
+        if (max < id) max = id;
+        pages[id] = r[1];
     }
-	
-	var id;
-	for (id = 0; id <= max; ++id) {
-		if (pages[id] == undefined) {
-			break;
-		}
-	}
-	
+    
+    var id;
+    for (id = 0; id <= max; ++id) {
+        if (pages[id] == undefined) {
+            break;
+        }
+    }
+    
     var lid;
     if (id < 10) {
         lid = "Lan00" + id;
@@ -304,28 +297,28 @@ function onClickSubmit_add_Language() {
     } else {
         lid = "Lan" + id;
     }
-	
+    
     //PageNameの送信
-	//console.log(lid);
-	var fdata = new FormData();
-	var textForm = document.getElementById("page");
-	xhr = XMLHttpRequestCreate();
-	fdata.append("name",textForm.value);
-	//console.log(textForm.value);
-	fdata.append("LanguageID",lid);
-	//fdata.append("Sequence",id);
-	var u = add_URL+"update_language.cgi";
-	//console.log(u);
-	xhr.open("post", u, false);
-	xhr.send(fdata);
-	//console.log(fdata);
-	
-	//Log
-	//console.log(xhr.response);
-	var res = new CGIResponse(xhr.response);
-	res.print();
-	
-	window.close();
+    //console.log(lid);
+    var fdata = new FormData();
+    var textForm = document.getElementById("page");
+    xhr = XMLHttpRequestCreate();
+    fdata.append("name",textForm.value);
+    //console.log(textForm.value);
+    fdata.append("LanguageID",lid);
+    //fdata.append("Sequence",id);
+    var u = BASE_PATH+"update_language.cgi";
+    //console.log(u);
+    xhr.open("post", u, false);
+    xhr.send(fdata);
+    //console.log(fdata);
+    
+    //Log
+    //console.log(xhr.response);
+    var res = new CGIResponse(xhr.response);
+    res.print();
+    
+    window.close();
 }
 
 function clearfile1(){
@@ -334,7 +327,7 @@ file.parentNode.innerHTML = file.parentNode.innerHTML;
 
 var input_file_show1 = document.getElementById("showPictureArea1");
 for (i =input_file_show1.childNodes.length-1; i>=0; i--){
-	input_file_show1.removeChild(input_file_show1.childNodes[i]);
+    input_file_show1.removeChild(input_file_show1.childNodes[i]);
 }
 }
 
@@ -344,7 +337,7 @@ file.parentNode.innerHTML = file.parentNode.innerHTML;
 
 var input_file_show2 = document.getElementById("showPictureArea2");
 for (i =input_file_show2.childNodes.length-1; i>=0; i--){
-	input_file_show2.removeChild(input_file_show2.childNodes[i]);
+    input_file_show2.removeChild(input_file_show2.childNodes[i]);
 }
 }
 
@@ -354,23 +347,23 @@ file.parentNode.innerHTML = file.parentNode.innerHTML;
 
 var input_file_show3 = document.getElementById("showPictureArea3");
 for (i =input_file_show3.childNodes.length-1; i>=0; i--){
-	input_file_show3.removeChild(input_file_show3.childNodes[i]);
+    input_file_show3.removeChild(input_file_show3.childNodes[i]);
 }
 }
 
 function XMLHttpRequestCreate(){
-	try {
-		return new XMLHttpRequest();
-	} catch(e) {}
-	try {
-		return new ActiveXObject('MSXML2.XMLHTTP.6.0');
-	} catch(e) {}
-	try {
-		return new ActiveXObject('MSXML2.XMLHTTP.3.0');
-	} catch(e) {}
-	try {
-		return new ActiveXObject('MSXML2.XMLHTTP');
-	} catch(e) {}
-	
-	return null;
+    try {
+        return new XMLHttpRequest();
+    } catch(e) {}
+    try {
+        return new ActiveXObject('MSXML2.XMLHTTP.6.0');
+    } catch(e) {}
+    try {
+        return new ActiveXObject('MSXML2.XMLHTTP.3.0');
+    } catch(e) {}
+    try {
+        return new ActiveXObject('MSXML2.XMLHTTP');
+    } catch(e) {}
+    
+    return null;
 }
