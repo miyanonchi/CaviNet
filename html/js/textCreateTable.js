@@ -1,8 +1,3 @@
-var URL = "http://ryugadou.mydns.jp/cgi-bin/";
-//var URL ="http://cloud9-server/cgi-bin/";
-//var URL ="http://192.168.0.101/cgi-bin/";
-//var URL ="http://192.168.11.51/cgi-bin/";
-
 
 function changeSelect(){
     var selected = document.getElementById("LanguageID")
@@ -13,12 +8,12 @@ function changeSelect(){
 function getCheckedID() {
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked) {
-	    var td = document.getElementById("Info(" + i + ",7)");
-	    var id = "Tes" + td.textContent;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked) {
+        var td = document.getElementById("Info(" + i + ",7)");
+        var id = "Tes" + td.textContent;
+        break;
+    }
     }
 }
 
@@ -26,7 +21,7 @@ function getCheckedID() {
 function clearCheckbox() {
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-	document.getElementById("Info(" + i + ",0)").firstElementChild.checked = false;
+    document.getElementById("Info(" + i + ",0)").firstElementChild.checked = false;
     }
 }
 
@@ -41,31 +36,26 @@ function getLanguageID(){
 function getPageID() {
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked) {
-	    var td = document.getElementById("Info(" + i + ",7)");
-	    var id = "Tes" + td.textContent;
-	    return id;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked) {
+        var td = document.getElementById("Info(" + i + ",7)");
+        var id = "Tes" + td.textContent;
+        return id;
+        break;
+    }
     }
 }
 
 function getName() {
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-	var tr = document.getElementById("Info(" + i + ",0)"); 
-	if (tr.firstElementChild.checked) {
-	    var td = document.getElementById("Info(" + i + ",2)");
-	    var name = td.textContent;
-	    return name;
-	    break;
-	}
+    var tr = document.getElementById("Info(" + i + ",0)"); 
+    if (tr.firstElementChild.checked) {
+        var td = document.getElementById("Info(" + i + ",2)");
+        var name = td.textContent;
+        return name;
+        break;
+    }
     }
 }
-
-
-
-
-
 

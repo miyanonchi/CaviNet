@@ -5,21 +5,20 @@
     <title>CaviNet</title>
     <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.18.1/build/cssreset-context/cssreset-context-min.css">
 
+    <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/formatter.js"></script>
     <script type="text/javascript" src="js/modal.js"></script>
     <script type="text/javascript" src="js/InformationEdit.js"></script>
-    
 
-    
     <body onload="textpic_setParams();">  
-	  <h2>インフォメーションの<u>テキスト・画像データ</u>または、<u>案内場所</u>を<font color="#ff0000">削除する</font></h2>
+      <h2>インフォメーションの<u>テキスト・画像データ</u>または、<u>案内場所</u>を<font color="#ff0000">削除する</font></h2>
       <hr>
       
-	  <p>
-	    <img src="pic/alert.png"  width="20px" height="20px">	
-	    <font size="4"><b>選択している案内場所は</b></font>
-	<input type="text" id="page" name="name" size="45" disabled="disabled">
-	<font size="4"><b>です</b></font>
+      <p>
+        <img src="pic/alert.png"  width="20px" height="20px">    
+        <font size="4"><b>選択している案内場所は</b></font>
+    <input type="text" id="page" name="name" size="45" disabled="disabled">
+    <font size="4"><b>です</b></font>
 </p>
 
 <table border="1" width="650">
@@ -43,29 +42,29 @@
     <div id = "picture">
       <h3><b><u>画像データのみを削除しますか？</u></b></h3>
       <font color="#ff0000">※画像データは3つまでしかありません。<br>
-	<font color="#ff0000">※１つずつ削除してください。<br>
-	  
-	  <table>
-	    <tr>
-	      <td id="picture0"></td>
-	      <td>１枚目の画像データ <input type="button" value="消去する" onclick="picture_kesu0();"></td> 
-	    </tr>
-	    
-	    <tr>
-	      <td id="picture1"></td>
-	      <td>２枚目の画像データ <input type="button" value="消去する" onclick="picture_kesu1();"></td>
-	    </tr>
-	    
-	    <tr>
-	      <td id="picture2"></td>
-	      <td>３枚目の画像データ <input type="button" value="消去する" onclick="picture_kesu2();"></td>
-	    </tr>
-	    　　　　　</table>
-	  
-	  <p>
-	    <input type="button" value="キャンセル" onclick="window.close()">    
-	  </p>
-	  
+    <font color="#ff0000">※１つずつ削除してください。<br>
+      
+      <table>
+        <tr>
+          <td id="picture0"></td>
+          <td>１枚目の画像データ <input type="button" value="消去する" onclick="picture_kesu0();"></td> 
+        </tr>
+        
+        <tr>
+          <td id="picture1"></td>
+          <td>２枚目の画像データ <input type="button" value="消去する" onclick="picture_kesu1();"></td>
+        </tr>
+        
+        <tr>
+          <td id="picture2"></td>
+          <td>３枚目の画像データ <input type="button" value="消去する" onclick="picture_kesu2();"></td>
+        </tr>
+        　　　　　</table>
+      
+      <p>
+        <input type="button" value="キャンセル" onclick="window.close()">    
+      </p>
+      
     </div>
 </td></tr>
 </table>
@@ -78,8 +77,8 @@
       <h3><font color="black"><b><u>『案内場所』を本当に削除しますか？</u></b></font></h3>
       ※選択しているこの案内場所に関する<u><b>全てのデータ</b></u>（テキスト・写真）が削除されます。
       <p>
-	<input type="button" value="消去する" onclick="page_kesu();">
-	<input type="button" value="キャンセル" onclick="window.close()">    
+    <input type="button" value="消去する" onclick="page_kesu();">
+    <input type="button" value="キャンセル" onclick="window.close()">    
       </p>
     </div>
 </td></tr>
