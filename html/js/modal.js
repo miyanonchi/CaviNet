@@ -433,7 +433,7 @@ function textpic_setParams3() {
     //console.log(parentData[7]); //Page.PitureID
 
 
-var AWSURL="http://ryugadou.mydns.jp/CaviNet/Picture/";
+var AWSURL="/CaviNet/Picture/";
 //テスト中
     var checkContents = document.getElementById("picture2");
 
