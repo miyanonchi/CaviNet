@@ -14,23 +14,23 @@ function onClickSubmit_edit_Info() {
     var textForm = document.getElementById("page");
     xhr = XMLHttpRequestCreate();
     if(textForm.value){
-    fdata.append("name",textForm.value);
+        fdata.append("name",textForm.value);
     }
     fdata.append("PageID",parentData[0]);
     var u = BASE_PATH+"update_page.cgi";
     xhr.open("post", u, false);
     xhr.send(fdata);
-    
+
     //本場の綴り
     var fdata = new FormData();
     var textForm = document.getElementById("page2");
     xhr = XMLHttpRequestCreate();
     if(textForm.value){
-    fdata.append("name",textForm.value);
+        fdata.append("name",textForm.value);
     }
     fdata.append("PageID",parentData[0]);
     fdata.append("LanguageID",parentData[2]);
-    
+
     var u = BASE_PATH+"update_tpage.cgi";
     xhr.open("post", u, false);
     xhr.send(fdata);
@@ -46,7 +46,7 @@ function onClickSubmit_edit_Info() {
     console.log(u);
     xhr.open("post", u, false);
     xhr.send(fdata);
-    
+
     //file情報の送信picture1
     var form = document.getElementById("picfile1");
     var fdata = new FormData(form);
@@ -57,7 +57,7 @@ function onClickSubmit_edit_Info() {
     var u = BASE_PATH+"update_picture.cgi";
     xhr.open("post", u, false);
     xhr.send(fdata);
-    
+
     //file情報の送信picture2
     var form = document.getElementById("picfile2");
     var fdata = new FormData(form);
@@ -68,7 +68,7 @@ function onClickSubmit_edit_Info() {
     var u = BASE_PATH+"update_picture.cgi";
     xhr.open("post", u, false);
     xhr.send(fdata);
-    
+
     //file情報の送信picture3
     var form = document.getElementById("picfile3");
     var fdata = new FormData(form);
@@ -79,13 +79,14 @@ function onClickSubmit_edit_Info() {
     var u = BASE_PATH+"update_picture.cgi";
     xhr.open("post", u, false);
     xhr.send(fdata);
-    
-    
+
     //Log
     var res = new CGIResponse(xhr.response);
     res.print();
-    
-    window.close();
+
+    xhr.onreadystatechange = function() {
+        window.close();
+    }
 }
 
 //Voice
@@ -105,16 +106,16 @@ function onClickSubmit_edit_Voice() {
     var textForm = document.getElementById("page2");
     xhr = XMLHttpRequestCreate();
     if(textForm.value){
-    fdata.append("name",textForm.value);
+        fdata.append("name",textForm.value);
     }
     fdata.append("LocationID",parentData[0]);
     fdata.append("LanguageID",parentData[2]);
-    
+
     var u = BASE_PATH+"update_tlocation.cgi";
     xhr.open("post", u, false);
     xhr.send(fdata);
-    
-    
+
+
     //file情報の送信
     var form = document.getElementById("file");
     var fdata = new FormData(form);
@@ -124,12 +125,14 @@ function onClickSubmit_edit_Voice() {
     var u = BASE_PATH+"update_voice.cgi";
     xhr.open("post", u, false);
     xhr.send(fdata);
-    
+
     //Log
     var res = new CGIResponse(xhr.response);
     res.print();
-    
-    window.close();
+
+    xhr.onreadystatechange = function() {
+        window.close();
+    }
 }
 
 //Language
@@ -147,37 +150,39 @@ function onClickSubmit_edit_Language() {
     //Log
     var res = new CGIResponse(xhr.response);
     res.print();
-    
-    window.close();
+
+    xhr.onreadystatechange = function() {
+        window.close();
+    }
 }
 
 
 function clearfile1(){
-var file = document.getElementById( 'pic1' );
-file.parentNode.innerHTML = file.parentNode.innerHTML;
+    var file = document.getElementById( 'pic1' );
+    file.parentNode.innerHTML = file.parentNode.innerHTML;
 
-var input_file_show1 = document.getElementById("showPictureArea1");
-for (i =input_file_show1.childNodes.length-1; i>=0; i--){
-    input_file_show1.removeChild(input_file_show1.childNodes[i]);
-}
+    var input_file_show1 = document.getElementById("showPictureArea1");
+    for (i =input_file_show1.childNodes.length-1; i>=0; i--){
+        input_file_show1.removeChild(input_file_show1.childNodes[i]);
+    }
 }
 
 function clearfile2(){
-var file = document.getElementById( 'pic2' );
-file.parentNode.innerHTML = file.parentNode.innerHTML;
+    var file = document.getElementById( 'pic2' );
+    file.parentNode.innerHTML = file.parentNode.innerHTML;
 
-var input_file_show2 = document.getElementById("showPictureArea2");
-for (i =input_file_show2.childNodes.length-1; i>=0; i--){
-    input_file_show2.removeChild(input_file_show2.childNodes[i]);
-}
+    var input_file_show2 = document.getElementById("showPictureArea2");
+    for (i =input_file_show2.childNodes.length-1; i>=0; i--){
+        input_file_show2.removeChild(input_file_show2.childNodes[i]);
+    }
 }
 
 function clearfile3(){
-var file = document.getElementById( 'pic3' );
-file.parentNode.innerHTML = file.parentNode.innerHTML;
+    var file = document.getElementById( 'pic3' );
+    file.parentNode.innerHTML = file.parentNode.innerHTML;
 
-var input_file_show3 = document.getElementById("showPictureArea3");
-for (i =input_file_show3.childNodes.length-1; i>=0; i--){
-    input_file_show3.removeChild(input_file_show3.childNodes[i]);
-}
+    var input_file_show3 = document.getElementById("showPictureArea3");
+    for (i =input_file_show3.childNodes.length-1; i>=0; i--){
+        input_file_show3.removeChild(input_file_show3.childNodes[i]);
+    }
 }
