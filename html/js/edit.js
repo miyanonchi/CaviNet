@@ -77,16 +77,19 @@ function onClickSubmit_edit_Info() {
     fdata.append("PictureID","Pic002");
     xhr = XMLHttpRequestCreate();
     var u = BASE_PATH+"update_picture.cgi";
+
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+            window.close();
+        }
+    };
+
     xhr.open("post", u, false);
     xhr.send(fdata);
 
     //Log
     var res = new CGIResponse(xhr.response);
     res.print();
-
-    xhr.onreadystatechange = function() {
-        window.close();
-    }
 }
 
 //Voice
@@ -115,7 +118,6 @@ function onClickSubmit_edit_Voice() {
     xhr.open("post", u, false);
     xhr.send(fdata);
 
-
     //file情報の送信
     var form = document.getElementById("file");
     var fdata = new FormData(form);
@@ -123,16 +125,19 @@ function onClickSubmit_edit_Voice() {
     fdata.append("LocationID",parentData[0]);
     xhr = XMLHttpRequestCreate();
     var u = BASE_PATH+"update_voice.cgi";
+
+    xhr.onreadystatechange = function() {
+        if(xhr.readyState === 4 && xhr.status === 200) {
+            window.close();
+        }
+    };
+
     xhr.open("post", u, false);
     xhr.send(fdata);
 
     //Log
     var res = new CGIResponse(xhr.response);
     res.print();
-
-    xhr.onreadystatechange = function() {
-        window.close();
-    }
 }
 
 //Language
@@ -150,10 +155,6 @@ function onClickSubmit_edit_Language() {
     //Log
     var res = new CGIResponse(xhr.response);
     res.print();
-
-    xhr.onreadystatechange = function() {
-        window.close();
-    }
 }
 
 

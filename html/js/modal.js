@@ -20,9 +20,9 @@ var Pathcount;
 
 /*1,【モーダルを表示する】テキスト・写真-add*/
 function info_add_showModal(element) {
-    
+
     if (alert_check2() == false) {
-    return;
+        return;
     }
     
 
@@ -33,12 +33,12 @@ function info_add_showModal(element) {
     showModalDialog("Info_add_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;"); 
     changeSelect();
 }
- 
+
 /*1,【モーダルを表示する】音声-add*/
 function voice_add_showModal(element) {
 
     if (alert_check2() == false) {
-    return;
+        return;
     }
     
     var sendArguments = [];  
@@ -53,7 +53,7 @@ function voice_add_showModal(element) {
 function language_add_showModal(element) {
 
     if (alert_check2() == false) {
-    return;
+        return;
     }
 
 
@@ -69,65 +69,65 @@ function language_add_showModal(element) {
 
 /*1,【モーダルを表示する】テキスト・写真-edit*/
 function info_edit_showModal() {
-    
-     if (alert_check() == true) {
+
+   if (alert_check() == true) {
     return;
-    }
-    
-    var sendArguments = [];  
-    /*PageID*/
-    sendArguments[0] = getPageID(); 
-    /*Name*/
-    sendArguments[1] = getName();
-    /*languageID*/
-    sendArguments[2] = getLanguageID(); 
-    /*PictureID*/
-    sendArguments[3] = getPictureID();
-    /*FilePath*/
-    sendArguments[4] = getFilePath();
-    /*PictureIDの数 */
-    sendArguments[5] = len;
-    /*nativeNmae*/
-    sendArguments[6] = getnativeName();
-    /*pictureID ver2*/
-    sendArguments[7] = getFilePath2();
+}
+
+var sendArguments = [];  
+/*PageID*/
+sendArguments[0] = getPageID(); 
+/*Name*/
+sendArguments[1] = getName();
+/*languageID*/
+sendArguments[2] = getLanguageID(); 
+/*PictureID*/
+sendArguments[3] = getPictureID();
+/*FilePath*/
+sendArguments[4] = getFilePath();
+/*PictureIDの数 */
+sendArguments[5] = len;
+/*nativeNmae*/
+sendArguments[6] = getnativeName();
+/*pictureID ver2*/
+sendArguments[7] = getFilePath2();
 
 
-    /*モーダルダイアログを開く*/ 
-    showModalDialog("Info_edit_modal.html",sendArguments,"dialogWidth=900px; dialogHeight=2000px;"); 
-    changeSelect();
+/*モーダルダイアログを開く*/ 
+showModalDialog("Info_edit_modal.html",sendArguments,"dialogWidth=900px; dialogHeight=2000px;"); 
+changeSelect();
 }
 
 /*1,【モーダルを表示する】音声-edit*/
 function voice_edit_showModal(element) {
 
-     if (alert_check() == true) {
+   if (alert_check() == true) {
     return;
-    }
-    
+}
 
-    var sendArguments = [];  
-    /*PageID*/
-    sendArguments[0] = getLocationID();
-    
-    sendArguments[1] = getvoiceName();
-    
-    /*languageID*/
-    sendArguments[2] = getLanguageID();
-    /*voice_nativeName*/
-    sendArguments[3] = getnativeName2();
-    /*モーダルダイアログを開く*/ 
-    showModalDialog("Voice_edit_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;"); 
-    changeSelect();
+
+var sendArguments = [];  
+/*PageID*/
+sendArguments[0] = getLocationID();
+
+sendArguments[1] = getvoiceName();
+
+/*languageID*/
+sendArguments[2] = getLanguageID();
+/*voice_nativeName*/
+sendArguments[3] = getnativeName2();
+/*モーダルダイアログを開く*/ 
+showModalDialog("Voice_edit_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;"); 
+changeSelect();
 }
 
 /*1,【モーダルを表示する】言語-edit*/
 function language_edit_showModal(element) {
 
-     if (alert_check() == true) {
-    return;
+   if (alert_check() == true) {
+        return;
     }
-    
+
     var sendArguments = [];
     sendArguments[1] = getlanguageName();
     /*languageID*/
@@ -157,7 +157,7 @@ function text_delete_showModal(element) {
 function voice_delete_showModal(element) {
 
     if (alert_check() == true) {
-    return;
+        return;
     }
 
     var sendArguments = [];  
@@ -177,7 +177,7 @@ function voice_delete_showModal(element) {
 function language_delete_showModal(element) {
 
     if (alert_check() == true) {
-    return;
+        return;
     }
 
     var sendArguments = [];  
@@ -186,14 +186,14 @@ function language_delete_showModal(element) {
     sendArguments[2] = getLanguageID2(); 
     /*モーダルダイアログを開く*/
     showModalDialog("Language_delete_modal.html",sendArguments,"dialogWidth=550px; dialogHeight=2000px;");
-location.reload(true);
+    location.reload(true);
 }
 
 /*1,【モーダルを表示する】写真-delete　*/
 function textpic_showModal() {
 
     if (alert_check() == true) {
-    return;
+        return;
     }
 
     var sendArguments = [];
@@ -233,21 +233,21 @@ function textpic_showModal() {
 
 
 /*4,【delete】テキスト */
-    /*親ウインドウからデータを受け取る*/
-    function text_setParams() {
+/*親ウインドウからデータを受け取る*/
+function text_setParams() {
     parentData = window.dialogArguments;
     
     console.log(parentData);
     console.log(parentData[0]);
     console.log(parentData[2]);
-    }
+}
 
 
 function text_kesu() {
     console.log(parentData[6]);
     
     if (parentData[6] == "pic/notext.txt") {
-    return;
+        return;
     }
     
     console.log("iii"); 
@@ -270,15 +270,15 @@ function text_kesu() {
     // 中身を表示する
     res.print();
     //}    
- 
+
     window.close();
 
 }
 
 /*4, 【delete】音声  */
 
-    <!--親ウインドウからデータを受け取る-->
-    function voice_setParams() {
+/*--親ウインドウからデータを受け取る--*/
+function voice_setParams() {
     parentData = window.dialogArguments;
     
     console.log(parentData);
@@ -286,7 +286,7 @@ function text_kesu() {
     console.log(parentData[1]);
     console.log(parentData[2]);
     console.log(parentData[3]);
-    }
+}
 
 
 function voice_kesu() {
@@ -377,17 +377,17 @@ function textpic_setParams() {
     var iframe = document.createElement("iframe");
     iframe.width = 470;
     if(parentData[6] == undefined){
-    iframe.src = "pic/notext.txt";   
+        iframe.src = "pic/notext.txt";   
     } else {
-    iframe.src = parentData[6];
+        iframe.src = parentData[6];
     }
     input_file_show.appendChild(iframe);
-  
+
     
     // 写真は３枚まで載せるということで,下のiの値は3にしている。
     for(i = 0; i < 3; i++) {
-    var checkContents = document.getElementById("picture"+i);
-    console.log("picture"+i);
+        var checkContents = document.getElementById("picture"+i);
+        console.log("picture"+i);
 
     //var newInput = document.createElement("input");
     //newInput.type = "radio";
@@ -402,7 +402,7 @@ function textpic_setParams() {
     }
     createImg.width = 150;
     checkContents.appendChild(createImg);
-    }
+}
 }
 
 
@@ -435,21 +435,21 @@ function textpic_setParams3() {
 
 var AWSURL="/CaviNet/Picture/";
 //テスト中
-    var checkContents = document.getElementById("picture2");
+var checkContents = document.getElementById("picture2");
 
-    for(i=0; i<3; i++){
-        if(parentData[7][i] != null) {
-            var createImg = document.createElement("img");
-            createImg.src = parentData[4][i];
-            createImg.width = 200;
-            document.getElementById("picture"+i).appendChild(createImg);            
-        } else {
-            var createImg = document.createElement("img");
-            createImg.src = "pic/noimage.png";
-            createImg.width = 200;
-            document.getElementById("picture"+i).appendChild(createImg);
-        }
+for(i=0; i<3; i++){
+    if(parentData[7][i] != null) {
+        var createImg = document.createElement("img");
+        createImg.src = parentData[4][i];
+        createImg.width = 200;
+        document.getElementById("picture"+i).appendChild(createImg);            
+    } else {
+        var createImg = document.createElement("img");
+        createImg.src = "pic/noimage.png";
+        createImg.width = 200;
+        document.getElementById("picture"+i).appendChild(createImg);
     }
+}
 }
 /*
     //1番目の画像
@@ -474,71 +474,71 @@ var AWSURL="/CaviNet/Picture/";
     console.log("picture"+2)
     document.getElementById("picture"+2).appendChild(createImg);
     }
-*/
-/* 【delete】案内場所(Page) ←　これをやると関連するテキストと写真も消える...よ*/
-function page_setParams() {
-    parentData = window.dialogArguments;
+    */
+    /* 【delete】案内場所(Page) ←　これをやると関連するテキストと写真も消える...よ*/
+    function page_setParams() {
+        parentData = window.dialogArguments;
 
-    console.log(parentData);
-    console.log("PageID" + parentData[0]);
-}
-
-function page_kesu() {
-    if(window.confirm('本当によろしいですか？\n選択している『案内場所』の画像・テキストが\n全て消えますよ？')){
-    } else{
-    return;    
+        console.log(parentData);
+        console.log("PageID" + parentData[0]);
     }
-    
-    xhr = XMLHttpRequestCreate();
-    xhr.open("POST", BASE_PATH+"delete_page.cgi", false);
 
-    var fdata = new FormData();
-    fdata.append("PageID", parentData[0]);
-    xhr.send(fdata);
+    function page_kesu() {
+        if(window.confirm('本当によろしいですか？\n選択している『案内場所』の画像・テキストが\n全て消えますよ？')){
+        } else{
+            return;    
+        }
 
-    var res = new CGIResponse(xhr.response);
-    res.print();
+        xhr = XMLHttpRequestCreate();
+        xhr.open("POST", BASE_PATH+"delete_page.cgi", false);
 
-     window.close();
-    
-}
+        var fdata = new FormData();
+        fdata.append("PageID", parentData[0]);
+        xhr.send(fdata);
+
+        var res = new CGIResponse(xhr.response);
+        res.print();
+
+        window.close();
+
+    }
 
 
-/* 【delete】写真 */
-function picture_kesu() {
+    /* 【delete】写真 */
+    function picture_kesu() {
+        xhr = XMLHttpRequestCreate();
+        xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
+        console.log(parentData[3]);
+
+        var fdata = new FormData();
+        console.log("あああ");
+        fdata.append("PageID", parentData[0]);
+        console.log("いいい");
+        for(i = 0; i < 3; ++i) {
+            console.log("ううう");
+            var tr = document.getElementById("picture"+i); 
+            if(tr.firstElementChild.checked) {
+                console.log("えええ");
+                fdata.append("PictureID", parentData[3][i]);
+            }
+        }
+        xhr.send(fdata);
+        var res = new CGIResponse(xhr.response);
+        res.print();
+
+        window.close();
+
+    }
+
+    function picture_kesu0() {
+       if(parentData[4][0] == undefined){
+        return;
+    }
+
     xhr = XMLHttpRequestCreate();
     xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
     console.log(parentData[3]);
-    
-    var fdata = new FormData();
-     console.log("あああ");
-    fdata.append("PageID", parentData[0]);
-     console.log("いいい");
-    for(i = 0; i < 3; ++i) {
-    console.log("ううう");
-    var tr = document.getElementById("picture"+i); 
-    if(tr.firstElementChild.checked) {
-        console.log("えええ");
-        fdata.append("PictureID", parentData[3][i]);
-    }
-    }
-    xhr.send(fdata);
-    var res = new CGIResponse(xhr.response);
-    res.print();
 
-   window.close();
-
-}
-
-function picture_kesu0() {
-     if(parentData[4][0] == undefined){
-    return;
-    }
-
-    xhr = XMLHttpRequestCreate();
-    xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
-    console.log(parentData[3]);
-  
     var fdata = new FormData();
     fdata.append("PageID", parentData[0]);
     fdata.append("PictureID", parentData[7][0]);
@@ -549,40 +549,40 @@ function picture_kesu0() {
 }
 
 function picture_kesu1() {
-     if(parentData[4][1] == undefined){
+   if(parentData[4][1] == undefined){
     return;
-    }
+}
 
-    xhr = XMLHttpRequestCreate();
-    xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
-    console.log(parentData[3]);
-  
-    var fdata = new FormData();
-    fdata.append("PageID", parentData[0]);
-    fdata.append("PictureID", parentData[7][1]);
-    xhr.send(fdata);
-    var res = new CGIResponse(xhr.response);
-    res.print();
-    window.close();   
+xhr = XMLHttpRequestCreate();
+xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
+console.log(parentData[3]);
+
+var fdata = new FormData();
+fdata.append("PageID", parentData[0]);
+fdata.append("PictureID", parentData[7][1]);
+xhr.send(fdata);
+var res = new CGIResponse(xhr.response);
+res.print();
+window.close();   
 }
 
 function picture_kesu2() {
-     if(parentData[4][2] == undefined){     
+   if(parentData[4][2] == undefined){     
     return 0;
-    }
+}
 
-    xhr = XMLHttpRequestCreate();
-    xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
-    console.log(parentData[7]);
-    console.log(Pathcount);
-  
-    var fdata = new FormData();
-    fdata.append("PageID", parentData[0]);
-    fdata.append("PictureID", parentData[7][2]);
-    xhr.send(fdata);
-    var res = new CGIResponse(xhr.response);
-    res.print();
-    window.close();   
+xhr = XMLHttpRequestCreate();
+xhr.open("POST", BASE_PATH+"delete_picture.cgi", false);
+console.log(parentData[7]);
+console.log(Pathcount);
+
+var fdata = new FormData();
+fdata.append("PageID", parentData[0]);
+fdata.append("PictureID", parentData[7][2]);
+xhr.send(fdata);
+var res = new CGIResponse(xhr.response);
+res.print();
+window.close();   
 }
 
 
@@ -592,14 +592,14 @@ function getPageID() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)"); 
-    if (tr.firstElementChild.checked) {
-        var td = document.getElementById("Info(" + i + ",7)");
-        console.log(td);
-        var id = "Pag" + td.textContent;
-        
-        return id;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        if (tr.firstElementChild.checked) {
+            var td = document.getElementById("Info(" + i + ",7)");
+            console.log(td);
+            var id = "Pag" + td.textContent;
+
+            return id;
+        }
     }
 }
 
@@ -608,13 +608,13 @@ function getName() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)"); 
-    if (tr.firstElementChild.checked) {
-        var name = InfoTable[i][1];
-        console.log(name);
-        return name;
-        break;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        if (tr.firstElementChild.checked) {
+            var name = InfoTable[i][1];
+            console.log(name);
+            return name;
+            break;
+        }
     }
 }
 
@@ -624,13 +624,13 @@ function getvoiceName() {
     console.log(len.length);
     console.log(voiceInfoTable);
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)"); 
-    if (tr.firstElementChild.checked) {
-        var name = voiceInfoTable[i][1];
-        console.log(name);
-        return name;
-        break;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        if (tr.firstElementChild.checked) {
+            var name = voiceInfoTable[i][1];
+            console.log(name);
+            return name;
+            break;
+        }
     }
 }
 
@@ -639,13 +639,13 @@ function getlanguageName() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)"); 
-    if (tr.firstElementChild.checked) {
-        var name = langInfoTable[i][1];
-        console.log(name);
-        return name;
-        break;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        if (tr.firstElementChild.checked) {
+            var name = langInfoTable[i][1];
+            console.log(name);
+            return name;
+            break;
+        }
     }
 }
 
@@ -663,16 +663,16 @@ function getLanguageID2() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log(len.length);
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)"); 
-    console.log(tr);
-    if (tr.firstElementChild.checked) {
-        var td = document.getElementById("Info(" + i + ",1)");
-        console.log(td);
-        var id = "Lan" + td.textContent;
-        console.log(id);
-        return id;
-        break;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        console.log(tr);
+        if (tr.firstElementChild.checked) {
+            var td = document.getElementById("Info(" + i + ",1)");
+            console.log(td);
+            var id = "Lan" + td.textContent;
+            console.log(id);
+            return id;
+            break;
+        }
     }
 }
 
@@ -686,13 +686,13 @@ function getPictureID() {
 
 
     for(i = 0; i < InfoPicTable.length; ++i){
-    if( InfoPicTable[i][1] == pageid ) {
-        console.log(InfoPicTable[i][0]);
+        if( InfoPicTable[i][1] == pageid ) {
+            console.log(InfoPicTable[i][0]);
         id[count] = InfoPicTable[i][0]; //PictureID
         count++;
     }    
-    }
-    return id;
+}
+return id;
 }
 
 var len;
@@ -735,22 +735,22 @@ function getFilePath2() {
 
 
 function getTextFilePath() {
-    
+
     var FilePath2 = [];
     var count2 = 0;
     var pageid2 = getPageID();
     //console.log("a" + pageid);
     for(i = 0; i < InfoTable.length; i++) {
-    if(InfoTable[i][0] == pageid2) {
-        console.log(InfoTable[i][7]);
-        if(InfoTable[i][7] == undefined) {
-        var notext = "pic/notext.txt";
-        return notext;
+        if(InfoTable[i][0] == pageid2) {
+            console.log(InfoTable[i][7]);
+            if(InfoTable[i][7] == undefined) {
+                var notext = "pic/notext.txt";
+                return notext;
+            }
+            var Path2 = InfoTable[i][7].substring(8);
+            FilePath2[count2] = Path2;
+            count2++;
         }
-        var Path2 = InfoTable[i][7].substring(8);
-        FilePath2[count2] = Path2;
-        count2++;
-    }
     }
     return FilePath2;
 }
@@ -766,7 +766,7 @@ function getLocationID() {
             var id = "Loc" + td.textContent;
 
             return id;
-                break;
+            break;
         }
     }
 }
@@ -777,18 +777,18 @@ function alert_check() {
     var count = 0;
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)");
-    console.log(tr);
-    if (tr.firstElementChild.checked == true) {
-        count++;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)");
+        console.log(tr);
+        if (tr.firstElementChild.checked == true) {
+            count++;
+        }
     }
     if(count == 0) {
-    document.getElementById("alert").innerHTML = "表にチェックを付けてください";
-    return true;
+        document.getElementById("alert").innerHTML = "表にチェックを付けてください";
+        return true;
     } else {
-    document.getElementById("alert").innerHTML = "";
-    return false;
+        document.getElementById("alert").innerHTML = "";
+        return false;
     }
 }
 
@@ -797,18 +797,18 @@ function alert_check2() {
     var count = 0;
     var len = document.getElementById("TbodyArea").childNodes;
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)");
-    console.log(tr);
-    if (tr.firstElementChild.checked == true) {
-        count++;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)");
+        console.log(tr);
+        if (tr.firstElementChild.checked == true) {
+            count++;
+        }
     }
     if(count == 0) {
-    document.getElementById("alert").innerHTML = "";
-    return true;
+        document.getElementById("alert").innerHTML = "";
+        return true;
     } else {
-    document.getElementById("alert").innerHTML = "表にチェックを付けないでください";
-    return false;
+        document.getElementById("alert").innerHTML = "表にチェックを付けないでください";
+        return false;
     }
 }
 
@@ -821,13 +821,13 @@ function alert_modal() {
     
     var ess = new Array("page", "page2");
     for(i = 0; i < ess.length; i++) {
-    var txt = document.location.ess[i].value;
-    console.log(txt);
-    if(txt == "") {
-        document.getElementById("location").innerHTML = "案内場所に入力してください";
-    } else {
-    document.getElementById("location").innerHTML = "";
-    }    
+        var txt = document.location.ess[i].value;
+        console.log(txt);
+        if(txt == "") {
+            document.getElementById("location").innerHTML = "案内場所に入力してください";
+        } else {
+            document.getElementById("location").innerHTML = "";
+        }    
     }
 }
 
@@ -836,13 +836,13 @@ function getnativeName() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log("len" + len.length);
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)"); 
-    if (tr.firstElementChild.checked == true) {
-        var name = InfoTable[i][9];
-        console.log("nativeName" + name);
-        return name;
-        break;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        if (tr.firstElementChild.checked == true) {
+            var name = InfoTable[i][9];
+            console.log("nativeName" + name);
+            return name;
+            break;
+        }
     }
 }    
 
@@ -851,12 +851,12 @@ function getnativeName2() {
     var len = document.getElementById("TbodyArea").childNodes;
     console.log("len" + len.length);
     for (var i = 0; i < len.length; ++i) {
-    var tr = document.getElementById("Info(" + i + ",0)"); 
-    if (tr.firstElementChild.checked == true) {
-        var name = voiceInfoTable[i][6];
-        console.log("nativeName" + name);
-        return name;
-        break;
-    }
+        var tr = document.getElementById("Info(" + i + ",0)"); 
+        if (tr.firstElementChild.checked == true) {
+            var name = voiceInfoTable[i][6];
+            console.log("nativeName" + name);
+            return name;
+            break;
+        }
     }
 }    
