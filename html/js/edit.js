@@ -84,9 +84,9 @@ function onClickSubmit_edit_Info() {
     var res = new CGIResponse(xhr.response);
     res.print();
 
-    xhr.onreadystatechange = function() {
+    xhr.addEventListener('loadend', function() {
         window.close();
-    }
+    });
 }
 
 //Voice
@@ -130,9 +130,9 @@ function onClickSubmit_edit_Voice() {
     var res = new CGIResponse(xhr.response);
     res.print();
 
-    xhr.onreadystatechange = function() {
+    xhr.addEventListener('loadend', function() {
         window.close();
-    }
+    });
 }
 
 //Language
@@ -151,9 +151,9 @@ function onClickSubmit_edit_Language() {
     var res = new CGIResponse(xhr.response);
     res.print();
 
-    xhr.onreadystatechange = function() {
+    xhr.addEventListener('loadend', function() {
         window.close();
-    }
+    });
 }
 
 
